@@ -63,22 +63,17 @@ do_mount()
     OPTS="rw,noatime"
 
     # File system type specific mount options
-    #if [[ ${ID_FS_TYPE} == "vfat" ]]; then
-    #    OPTS+=",users,gid=100,umask=000,shortname=mixed,utf8=1,flush"
-    #fi
-
-    # # We need symlinks for Steam for now, so only automount ext4 as that'll Steam will format right now
-    # if [[ ${ID_FS_TYPE} != "ext4" ]]; then
-    #   exit 1
-    # fi
-
-    # Custom btrfs addition from https://github.com/Trevo525/Steam-Deck-sdcard-mount
-    if [[ ${ID_FS_TYPE} == "btrfs" ]]; then
-        OPTS+=",compress-force=zstd:15"
+    if [[ ${ID_FS_TYPE} == "vfat" ]]; then
+        OPTS+=",users,gid=100,umask=000,shortname=mixed,utf8=1,flush"
     fi
 
-    if [[ ${ID_FS_TYPE} != "ext4" && ${ID_FS_TYPE} != "btrfs" ]]; then
-        exit 1
+    if [[ ${ID_FS_TYPE} == "exfat" ]]; then
+        OPTS+=",users,uid=1000,gid=1000,utf8=1,flush"
+    fi
+
+    # We need symlinks for Steam for now, so only automount ext4 as that'll Steam will format right now
+    if [[ ${ID_FS_TYPE} != "ext4" && ${ID_FS_TYPE} != "vfat" && ${ID_FS_TYPE} != "exfat" ]]; then
+      exit 1
     fi
 
     if ! /bin/mount -o ${OPTS} ${DEVICE} ${MOUNT_POINT}; then
