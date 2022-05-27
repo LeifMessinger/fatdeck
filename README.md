@@ -16,28 +16,12 @@ I straight up copied the btrfdeck downloader, but it should work regardless.
 # Guide:
 ## 1. Download this project to your home directory of the deck.
     cd ~
-    git clone https://github.com/Trevo525/btrfdeck
-    cd btrfdeck
+    git clone https://github.com/LeifMessinger/fatdeck
+    cd fatdeck
 ## 2. Setup `deck` user with a password so that you can run things that need sudo.
     passwd deck
-## 3. Backup the old script.
-    mkdir ./backup/
-    cp /usr/lib/hwsupport/sdcard-mount.sh ./backup/sdcard-mount.sh
-    cp /usr/lib/hwsupport/format-sdcard.sh ./backup/format-sdcard.sh
-## 4. Change the filesystem to read-write so that you can make changes to the protected files. 
-#### **NOTE: this makes your entire "SteamOS" partition read-write. Basically, removing all barriers keeping you from breaking your system. You've been warned**.
-    sudo steamos-readonly disable
-## 5. Replace with modified configs.
-    sudo rm /usr/lib/hwsupport/sdcard-mount.sh && sudo rm /usr/lib/hwsupport/format-sdcard.sh
-    sudo cp ./modified/sdcard-mount.sh /usr/lib/hwsupport/sdcard-mount.sh
-    sudo cp ./modified/format-sdcard.sh /usr/lib/hwsupport/format-sdcard.sh
-    sudo chmod 755 /usr/lib/hwsupport/sdcard-mount.sh /usr/lib/hwsupport/format-sdcard.sh
-## 6. Change the filesystem back to read-only so that you can no longer make changes to the protected files.
-    sudo steamos-readonly enable
-## 7. Remove the password from the deck user. (Skip this and next step to use btrfdeck_post_update.sh to re-run steps 3-6 after an OS update)
-    sudo passwd -d deck
-## 8. Format the SD card.
-    Press the "Format SD Card" button in the Steam Deck UI.
+## 3. run the fatdeck_post_update.sh script
+    If you want to know what it does, read the code
 
 At this point it should automatically mount the drive because both files were changed. If it does not here is how I would troubleshoot:
 * Try ejecting the microSD card and reinserting. (Sometimes it'll take a few seconds to mount a large drive.)
@@ -49,7 +33,7 @@ At this point it should automatically mount the drive because both files were ch
 
 # After a SteamOS update
 
-## Don't remove password and run the btrfdec_post_update.sh script by right-clicking it and selecting "Run in Konsole".
+## Don't remove password and run the exfat_post_update.sh script by right-clicking it and selecting "Run in Konsole".
 
 # Undo the changes: 
 ## 1. Setup `deck` user with a password.
