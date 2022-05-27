@@ -15,13 +15,25 @@ I straight up copied the btrfdeck downloader, but it should work regardless. Als
 
 # Guide:
 ## 1. Download this project to your home directory of the deck.
+You'll want to be in `konsole`, `sshd` or some other terminal.
+```
     cd ~
     git clone https://github.com/LeifMessinger/fatdeck
     cd fatdeck
+```
 ## 2. Setup `deck` user with a password so that you can run things that need sudo.
     passwd deck
 ## 3. run the fatdeck_post_update.sh script
-    If you want to know what it does, read the code
+
+If you want to know what it does, read the code.
+
+You may need to give the script execute permissions, so do `chmod u+x fatdeck_post_update.sh`
+
+To run, you have to do `./fatdeck_post_update.sh`
+
+This is because linux will search the default path for an executible unless the command looks like a path. `./` means current directory, but you could just as well do `/home/deck/Documents/fatdeck/fatdeck_post_update.sh` to run the script.
+
+## Troubleshooting
 
 At this point it should automatically mount the drive because both files were changed. If it does not here is how I would troubleshoot:
 * Try ejecting the microSD card and reinserting. (Sometimes it'll take a few seconds to mount a large drive.)
