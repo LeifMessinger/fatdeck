@@ -11,7 +11,7 @@ Have not tested fat32 since nobody should be using it anyways.
 
 This script may or may not get updated as the steam deck gets updated. Should work regardless. Hopefully this hack becomes obsolete.
 
-I straight up copied the btrfdeck downloader, but it should work regardless.
+I straight up copied the btrfdeck downloader, but it should work regardless. Also not tested.
 
 # Guide:
 ## 1. Download this project to your home directory of the deck.
