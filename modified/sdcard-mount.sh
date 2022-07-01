@@ -60,11 +60,11 @@ do_mount()
     /bin/mkdir -p ${MOUNT_POINT}
 
     # Global mount options
-    OPTS="rw,noatime"
+    OPTS="rw,exec,noatime"
 
     # File system type specific mount options
     if [[ ${ID_FS_TYPE} == "vfat" ]]; then
-        OPTS+=",users,gid=100,umask=000,shortname=mixed,utf8=1,flush"
+        OPTS+=",users,uid=1000,gid=1000,umask=000,shortname=mixed,utf8=1,flush"
     fi
 
     if [[ ${ID_FS_TYPE} == "exfat" ]]; then
