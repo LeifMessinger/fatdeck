@@ -1,3 +1,10 @@
+# Why is this repo archived?
+I bought some real sd cards and they work fine without ext4. Once again the solution is to throw money at the problem.
+
+The project this is forked from also got archived, so there's no way or reason to keep up with the changes to SteamOS.
+
+Check out their new project: [SteamOS BTRFS](https://gitlab.com/popsulfr/steamos-btrfs)
+
 # fatdeck
 Enables vfat (fat32) and exfat file systems on the steam deck.
 
